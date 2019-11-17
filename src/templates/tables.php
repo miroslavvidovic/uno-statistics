@@ -1,9 +1,5 @@
 <?php $this->layout('template', ['title' => 'UNO']) ?>
 
-<?php
-$data = 1000;
-?>
-
 <div class="row">
   <div class="col-sm-6">
     <table class="table table-bordered table-dark">
@@ -23,14 +19,14 @@ $data = 1000;
   <tbody>
     <tr>
       <th scope="row">Broj kucanja</th>
-      <td class="bg-primary"><?=$this->e($data)?></td>
-      <td class="bg-primary">100</td>
-      <td class="bg-primary">50</td>
-      <td class="bg-primary">Otto</td>
-      <td class="bg-primary">@mdo</td>
-      <td class="bg-primary">Otto</td>
-      <td class="bg-danger">@mdo</td>
-      <td class="bg-success">Otto</td>
+      <td class="bg-primary"><?=$this->data['l1'][0]['']?></td>
+      <td class="bg-primary"><?=$this->data['l2'][0]['']?></td>
+      <td class="bg-primary"><?=$this->data['l3'][0]['']?></td>
+      <td class="bg-primary"><?=$this->data['d1'][0]['']?></td>
+      <td class="bg-primary"><?=$this->data['d2'][0]['']?></td>
+      <td class="bg-primary"><?=$this->data['d3'][0]['']?></td>
+      <td class="bg-danger"><?=$this->data['m1'][0]['']?></td>
+      <td class="bg-success"><?=$this->data['v1'][0]['']?></td>
     </tr>
   </tbody>
 </table>
@@ -67,6 +63,7 @@ $data = 1000;
 
 
 <script>
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -74,7 +71,7 @@ var myChart = new Chart(ctx, {
         labels: ['L1', 'D1', 'L2', 'D2', 'L3', 'D3', 'M1', 'V1'],
         datasets: [{
             label: 'Broj kucanja po čitaču',
-            data: [12, 19, 3, 5, 20, 3,10,5],
+            data: [<?=$this->data['l1'][0]['']?>,<?=$this->data['l2'][0]['']?>,<?=$this->data['l3'][0]['']?>,<?=$this->data['d1'][0]['']?>,<?=$this->data['d2'][0]['']?>,<?=$this->data['d3'][0]['']?>,<?=$this->data['m1'][0]['']?>,<?=$this->data['v1'][0]['']?>],
             backgroundColor: [
                 'rgba(0, 123, 255)',
                 'rgba(0, 123, 255)',

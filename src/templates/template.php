@@ -18,7 +18,7 @@ $date = date("d.m.Y. - h:i:s ");
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-            <nav id="sidebar">
+            <!-- <nav id="sidebar">
                 <div class="sidebar-header">
                     <h3>UNO Monitoring</h3>
                 </div>
@@ -36,7 +36,7 @@ $date = date("d.m.Y. - h:i:s ");
                     <a href="/readers">Računari</a>
                 </li>
             </ul>
-        </nav>
+        </nav> -->
 
 
         <div id="content">

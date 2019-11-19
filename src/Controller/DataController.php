@@ -14,6 +14,22 @@ class DataController {
         $this->dataGateway = new DataGateway($db);
     }
 
+    public function getReaderStatsToday(){
+        
+        $l1 = $this->dataGateway->countReaderToday('uno-L1');
+        $l2 = $this->dataGateway->countReaderToday('uno-L2');
+        $l3 = $this->dataGateway->countReaderToday('uno-L3');
+        $d1 = $this->dataGateway->countReaderToday('uno-D1');
+        $d2 = $this->dataGateway->countReaderToday('uno-D2');
+        $d3 = $this->dataGateway->countReaderToday('uno-D3');
+        $m1 = $this->dataGateway->countReaderToday('uno-M1');
+        $v1 = $this->dataGateway->countReaderToday('uno-V1');
+
+        $result = ['l1'=>$l1,'l2'=>$l2,'l3'=>$l3,'d1'=>$d1,'d2'=>$d2,'d3'=>$d3,'m1'=>$m1,'v1'=>$v1];
+        
+        return $result;
+    }
+
     public function getReaderStats(){
         
         $l1 = $this->dataGateway->countReader('uno-L1');

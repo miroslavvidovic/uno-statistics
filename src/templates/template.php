@@ -11,32 +11,32 @@ $date = date("d.m.Y. - h:i:s ");
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <title><?=$this->e($title)?></title>
 
 </head>
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-            <!-- <nav id="sidebar">
+            <nav id="sidebar">
                 <div class="sidebar-header">
                     <h3>UNO Monitoring</h3>
                 </div>
                 <ul class="list-unstyled components">
                 <li>
-                    <a href="/readers">Početna strana</a>
+                    <a href="/readers">Prolasci danas</a>
                 </li>
                 <li>
-                    <a href="/readers">Prolasci</a>
+                    <a href="/readersall">Prolasci</a>
                 </li>
                 <li>
-                    <a href="/readers">Restorani</a>
+                    <a href="/restaurants">Restorani</a>
                 </li>
                 <li>
-                    <a href="/readers">Računari</a>
+                    <a href="/computers">Računari</a>
                 </li>
             </ul>
-        </nav> -->
+        </nav>
 
 
         <div id="content">

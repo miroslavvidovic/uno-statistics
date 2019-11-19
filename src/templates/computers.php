@@ -1,5 +1,6 @@
 <?php $this->layout('template', ['title' => 'UNO']) ?>
 
+<?php print_r($this->data) ?>
 <div class="card-deck">
   <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <div class="card-header">UNO Server</div>

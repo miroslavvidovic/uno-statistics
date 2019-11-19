@@ -48,7 +48,26 @@ class DataGateway {
                 SELECT 
 	                COUNT (*) 
                 FROM AXDB.dbo.UnoTrans
-                WHERE FC = '$name'
+                WHERE FC like '%$name%'
+        ";
+        
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
+    public function countReaderToday($name)
+    {
+        $today = date('Y-m-d');
+        $statement = "
+                SELECT 
+	                COUNT (*) 
+                FROM AXDB.dbo.UnoTrans
+                WHERE FC like '%$name%' AND DATEIO >= '$today'
         ";
         
         try {

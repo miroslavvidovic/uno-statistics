@@ -1,7 +1,8 @@
-<?php $this->layout('template', ['title' => 'UNO']) ?>
+<?php $this->layout('template', ['title' => 'UNO prolasci']) ?>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
     <table class="table table-bordered table-dark">
   <thead>
     <tr>
@@ -28,24 +29,6 @@
       <td class="bg-danger"><?=$this->data['m1'][0]['']?></td>
       <td class="bg-success"><?=$this->data['v1'][0]['']?></td>
     </tr>
-  </tbody>
-</table>
-  </div>
-  <div class="col-sm-6">
-    <table class="table table-bordered table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Čitač</th>
-      <th scope="col">RB</th>
-      <th scope="col">RC</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Broj kucanja</th>
-      <td class="bg-info"><?=$this->e($data)?></td>
-      <td class="bg-warning">100</td>
-   </tr>
   </tbody>
 </table>
   </div>
@@ -123,13 +106,19 @@ var ctx = document.getElementById('myChart2').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['RB', 'RC'],
+        labels: ['L1', 'D1', 'L2', 'D2', 'L3', 'D3', 'M1', 'V1'],
         datasets: [{
             label: 'Broj kucanja po čitaču',
-            data: [12, 19],
+            data: [<?=$this->data['l1'][0]['']?>,<?=$this->data['l2'][0]['']?>,<?=$this->data['l3'][0]['']?>,<?=$this->data['d1'][0]['']?>,<?=$this->data['d2'][0]['']?>,<?=$this->data['d3'][0]['']?>,<?=$this->data['m1'][0]['']?>,<?=$this->data['v1'][0]['']?>],
             backgroundColor: [
-                'rgba(23, 162, 184)',
-                'rgba(255, 193, 7)',
+                'rgba(0, 123, 255)',
+                'rgba(0, 123, 255)',
+                'rgba(0, 123, 255)',
+                'rgba(0, 123, 255)',
+                'rgba(0, 123, 255)',
+                'rgba(0, 123, 255)',
+                'rgba(220, 53, 69)',
+                'rgba(40, 167, 69)'
             ],
             borderColor: [
                 'rgba(255, 255,255)',

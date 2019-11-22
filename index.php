@@ -30,6 +30,12 @@ switch ($request) {
         // Render a template
         echo $templates->render('readers', $data);
         break;
+    case '/readersYesterday' :
+        $controller = new DataController($dbConnection);
+        $data = $controller->getReaderStatsYesterday();
+        // Render a template
+        echo $templates->render('readers', $data);
+        break;
     case '/restaurants' :
         $controller = new DataController($dbConnection);
         $data = $controller->getReaderStats();

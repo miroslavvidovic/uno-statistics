@@ -79,6 +79,28 @@ class DataGateway {
         }
     }
 
+
+    public function countReaderYesterday($name)
+    {   
+        $yesterday =  date("Y-m-d", strtotime('-1 days'));
+        $today =  date("Y-m-d");
+
+        $statement = "
+                SELECT 
+	                COUNT (*) 
+                FROM AXDB.dbo.UnoTrans
+                WHERE FC like '%$name%' AND DATEIO >= '$yesterday' AND DATEIO <'$today'
+        ";
+        
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
     public function countInvalid($name)
     {
         $statement = "

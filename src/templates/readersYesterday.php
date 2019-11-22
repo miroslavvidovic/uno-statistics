@@ -1,6 +1,5 @@
 <?php $this->layout('template', ['title' => 'UNO prolasci']) ?>
 
-
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
@@ -16,7 +15,6 @@
       <th scope="col">D3</th>
       <th scope="col">M1</th>
       <th scope="col">V1</th>
-      <th scope="col">Ukupno</th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +28,6 @@
       <td class="bg-primary"><?=$this->data['d3'][0]['']?></td>
       <td class="bg-danger"><?=$this->data['m1'][0]['']?></td>
       <td class="bg-success"><?=$this->data['v1'][0]['']?></td>
-      <td class=""><?=$this->data['total']?></td>
     </tr>
   </tbody>
 </table>

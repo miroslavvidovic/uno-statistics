@@ -24,10 +24,13 @@ $date = date("d.m.Y. - h:i:s ");
                 </div>
                 <ul class="list-unstyled components">
                 <li>
-                    <a href="/readers">Prolasci danas</a>
+                    <a href="/readersall">Prolasci ukupno</a>
                 </li>
                 <li>
-                    <a href="/readersall">Prolasci</a>
+                    <a href="/readersYesterday">Prolasci juče</a>
+                </li>
+                <li>
+                    <a href="/readers">Prolasci danas</a>
                 </li>
                 <li>
                     <a href="/restaurants">Restorani</a>

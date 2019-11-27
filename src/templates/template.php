@@ -33,7 +33,13 @@ $date = date("d.m.Y. - h:i:s ");
                     <a href="/readers">Prolasci danas</a>
                 </li>
                 <li>
-                    <a href="/restaurants">Restorani</a>
+                    <a href="/restaurantsall">Restorani ukupno</a>
+                </li>
+                <li>
+                    <a href="/restaurantsYesterday">Restorani juče</a>
+                </li>
+                <li>
+                    <a href="/restaurants">Restorani danas</a>
                 </li>
                 <li>
                     <a href="/computers">Računari</a>

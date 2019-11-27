@@ -4,6 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 require "bootstrap.php";
 
 use Src\Controller\DataController;
+use Src\Controller\BitovajaController;
+use Src\Controller\CentralController;
 use Src\Controller\PingController;
 
 // Create new Plates instance
@@ -13,10 +15,16 @@ $request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/' :
-        require __DIR__ . '/views/index.php';
+        $controller = new DataController($dbConnection);
+        $data = $controller->getReaderStatsToday();
+        // Render a template
+        echo $templates->render('readers', $data);
         break;
     case '' :
-        require __DIR__ . '/views/index.php';
+        $controller = new DataController($dbConnection);
+        $data = $controller->getReaderStatsToday();
+        // Render a template
+        echo $templates->render('readers', $data);
         break;
     case '/readers' :
         $controller = new DataController($dbConnection);
@@ -37,9 +45,30 @@ switch ($request) {
         echo $templates->render('readers', $data);
         break;
     case '/restaurants' :
-        $controller = new DataController($dbConnection);
-        $data = $controller->getReaderStats();
+        $controller = new BitovajaController($bitovajaConnection);
+        $dataB = $controller->getReaderStatsToday();
+        $controller = new CentralController($centralConnection);
+        $dataC = $controller->getReaderStatsToday();
         // Render a template
+        $data = array_merge($dataB,$dataC);
+        echo $templates->render('restaurants', $data);
+        break;
+    case '/restaurantsall' :
+        $controller = new BitovajaController($bitovajaConnection);
+        $dataB = $controller->getReaderStats();
+        $controller = new CentralController($centralConnection);
+        $dataC = $controller->getReaderStats();
+        // Render a template
+        $data = array_merge($dataB,$dataC);
+        echo $templates->render('restaurants', $data);
+        break;
+    case '/restaurantsYesterday' :
+        $controller = new BitovajaController($bitovajaConnection);
+        $dataB = $controller->getReaderStatsYesterday();
+        $controller = new CentralController($centralConnection);
+        $dataC = $controller->getReaderStatsYesterday();
+        // Render a template
+        $data = array_merge($dataB,$dataC);
         echo $templates->render('restaurants', $data);
         break;
     case '/computers' :

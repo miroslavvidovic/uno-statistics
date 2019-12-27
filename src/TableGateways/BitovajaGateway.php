@@ -17,7 +17,7 @@ class BitovajaGateway {
             SELECT
                 COUNT (*) 
             FROM UNO1.dbo.RESTORAN
-            WHERE READER like '%$name%' AND BT='34'
+            WHERE READER like '%$name%' AND BT='34' OR BT=NULL
         ";
         
         try {
@@ -36,7 +36,7 @@ class BitovajaGateway {
             SELECT
                 COUNT (*) 
             FROM UNO1.dbo.RESTORAN
-            WHERE READER like '%$name%' AND BT='34' AND DATEIO >='$today'
+            WHERE READER like '%$name%' AND DATEIO >='$today'
         ";
         
         try {
@@ -58,7 +58,7 @@ class BitovajaGateway {
                 SELECT 
 	                COUNT (*) 
                 FROM UNO1.dbo.RESTORAN
-                WHERE READER like '%$name%' AND BT='34' AND DATEIO >= '$yesterday' AND DATEIO <'$today'
+                WHERE READER like '%$name%' AND DATEIO >= '$yesterday' AND DATEIO <'$today'
         ";
         
         try {

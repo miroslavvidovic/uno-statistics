@@ -82,7 +82,7 @@
     </div>
   </div>
 
-  <?php if ($this->data['uno6'] == 0): ?>
+  <?php if ($this->data['192.168.4.49'] == 0): ?>
   <div class="card text-white bg-danger mb-3 border-dark" style="max-width: 18rem;">
   <?php else: ?>
   <div class="card text-white bg-success mb-3 border-dark" style="max-width: 18rem;">

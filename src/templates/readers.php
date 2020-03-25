@@ -16,6 +16,7 @@
       <th scope="col">D3</th>
       <th scope="col">M1</th>
       <th scope="col">V1</th>
+      <th scope="col">R</th>
       <th scope="col">Ukupno</th>
     </tr>
   </thead>
@@ -30,6 +31,7 @@
       <td class="bg-primary"><?=$this->data['d3'][0]['']?></td>
       <td class="bg-danger"><?=$this->data['m1'][0]['']?></td>
       <td class="bg-success"><?=$this->data['v1'][0]['']?></td>
+      <td class="bg-warning"><?=$this->data['r'][0]['']?></td>
       <td class=""><?=$this->data['total']?></td>
     </tr>
   </tbody>
@@ -54,10 +56,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['L1', 'D1', 'L2', 'D2', 'L3', 'D3', 'M1', 'V1'],
+        labels: ['L1', 'D1', 'L2', 'D2', 'L3', 'D3', 'M1', 'V1','R'],
         datasets: [{
             label: 'Broj kucanja po čitaču',
-            data: [<?=$this->data['l1'][0]['']?>,<?=$this->data['l2'][0]['']?>,<?=$this->data['l3'][0]['']?>,<?=$this->data['d1'][0]['']?>,<?=$this->data['d2'][0]['']?>,<?=$this->data['d3'][0]['']?>,<?=$this->data['m1'][0]['']?>,<?=$this->data['v1'][0]['']?>],
+            data: [<?=$this->data['l1'][0]['']?>,<?=$this->data['l2'][0]['']?>,<?=$this->data['l3'][0]['']?>,<?=$this->data['d1'][0]['']?>,<?=$this->data['d2'][0]['']?>,<?=$this->data['d3'][0]['']?>,<?=$this->data['m1'][0]['']?>,<?=$this->data['v1'][0]['']?>,<?=$this->data['r'][0]['']?>],
             backgroundColor: [
                 'rgba(0, 123, 255)',
                 'rgba(0, 123, 255)',
@@ -66,7 +68,8 @@ var myChart = new Chart(ctx, {
                 'rgba(0, 123, 255)',
                 'rgba(0, 123, 255)',
                 'rgba(220, 53, 69)',
-                'rgba(40, 167, 69)'
+                'rgba(40, 167, 69)',
+                'rgba(255, 193, 7)'
             ],
             borderColor: [
                 'rgba(255, 255,255)',
@@ -77,6 +80,7 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 255,255)',
                 'rgba(255, 255,255)',
                 'rgba(255, 255,255)',
+                'rgba(255, 255,255)'
             ],
             borderWidth: 2
         }]
@@ -109,10 +113,10 @@ var ctx = document.getElementById('myChart2').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['L1', 'D1', 'L2', 'D2', 'L3', 'D3', 'M1', 'V1'],
+        labels: ['L1', 'D1', 'L2', 'D2', 'L3', 'D3', 'M1', 'V1','R'],
         datasets: [{
             label: 'Broj kucanja po čitaču',
-            data: [<?=$this->data['l1'][0]['']?>,<?=$this->data['l2'][0]['']?>,<?=$this->data['l3'][0]['']?>,<?=$this->data['d1'][0]['']?>,<?=$this->data['d2'][0]['']?>,<?=$this->data['d3'][0]['']?>,<?=$this->data['m1'][0]['']?>,<?=$this->data['v1'][0]['']?>],
+            data: [<?=$this->data['l1'][0]['']?>,<?=$this->data['l2'][0]['']?>,<?=$this->data['l3'][0]['']?>,<?=$this->data['d1'][0]['']?>,<?=$this->data['d2'][0]['']?>,<?=$this->data['d3'][0]['']?>,<?=$this->data['m1'][0]['']?>,<?=$this->data['v1'][0]['']?>,<?=$this->data['r'][0]['']?>],
             backgroundColor: [
                 'rgba(0, 123, 255)',
                 'rgba(0, 123, 255)',
@@ -121,7 +125,8 @@ var myChart = new Chart(ctx, {
                 'rgba(0, 123, 255)',
                 'rgba(0, 123, 255)',
                 'rgba(220, 53, 69)',
-                'rgba(40, 167, 69)'
+                'rgba(40, 167, 69)',
+                'rgba(255, 193, 7)'
             ],
             borderColor: [
                 'rgba(255, 255,255)',
@@ -137,15 +142,5 @@ var myChart = new Chart(ctx, {
                  }
               },
     }     
-    // options: {
-    //     yAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true,
-    //             }
-    //         }],
-    //     legend: {
-    //         display: true,
-    //     }
-    // }
 });
 </script>

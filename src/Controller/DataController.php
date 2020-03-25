@@ -24,9 +24,10 @@ class DataController {
         $d3 = $this->dataGateway->countReaderToday('uno-D3');
         $m1 = $this->dataGateway->countReaderToday('uno-M1');
         $v1 = $this->dataGateway->countReaderToday('uno-V1');
-        $total =  $l1[0]['']+$l2[0]['']+$l3[0]['']+$d1[0]['']+$d2[0]['']+$d3[0]['']+$m1[0]['']+$v1[0][''];
+        $r  = $this->dataGateway->countManualEntryToday();
+        $total =  $l1[0]['']+$l2[0]['']+$l3[0]['']+$d1[0]['']+$d2[0]['']+$d3[0]['']+$m1[0]['']+$v1[0]['']+$r[0][''];
 
-        $result = ['l1'=>$l1,'l2'=>$l2,'l3'=>$l3,'d1'=>$d1,'d2'=>$d2,'d3'=>$d3,'m1'=>$m1,'v1'=>$v1,'total'=>$total];
+        $result = ['l1'=>$l1,'l2'=>$l2,'l3'=>$l3,'d1'=>$d1,'d2'=>$d2,'d3'=>$d3,'m1'=>$m1,'v1'=>$v1,'r'=>$r,'total'=>$total];
         
         return $result;
     }
@@ -41,9 +42,10 @@ class DataController {
         $d3 = $this->dataGateway->countReader('uno-D3');
         $m1 = $this->dataGateway->countReader('uno-M1');
         $v1 = $this->dataGateway->countReader('uno-V1');
-        $total =  $l1[0]['']+$l2[0]['']+$l3[0]['']+$d1[0]['']+$d2[0]['']+$d3[0]['']+$m1[0]['']+$v1[0][''];
+        $r  = $this->dataGateway->countManualEntry();
+        $total =  $l1[0]['']+$l2[0]['']+$l3[0]['']+$d1[0]['']+$d2[0]['']+$d3[0]['']+$m1[0]['']+$v1[0]['']+$r[0][''];
 
-        $result = ['l1'=>$l1,'l2'=>$l2,'l3'=>$l3,'d1'=>$d1,'d2'=>$d2,'d3'=>$d3,'m1'=>$m1,'v1'=>$v1,'total'=>$total];
+        $result = ['l1'=>$l1,'l2'=>$l2,'l3'=>$l3,'d1'=>$d1,'d2'=>$d2,'d3'=>$d3,'m1'=>$m1,'v1'=>$v1,'r'=>$r,'total'=>$total];
         
         return $result;
     }
@@ -57,9 +59,10 @@ class DataController {
         $d3 = $this->dataGateway->countReaderYesterday('uno-D3');
         $m1 = $this->dataGateway->countReaderYesterday('uno-M1');
         $v1 = $this->dataGateway->countReaderYesterday('uno-V1');
-        $total =  $l1[0]['']+$l2[0]['']+$l3[0]['']+$d1[0]['']+$d2[0]['']+$d3[0]['']+$m1[0]['']+$v1[0][''];
+        $r  = $this->dataGateway->countManualEntryYesterday();
+        $total =  $l1[0]['']+$l2[0]['']+$l3[0]['']+$d1[0]['']+$d2[0]['']+$d3[0]['']+$m1[0]['']+$v1[0]['']+$r[0][''];
 
-        $result = ['l1'=>$l1,'l2'=>$l2,'l3'=>$l3,'d1'=>$d1,'d2'=>$d2,'d3'=>$d3,'m1'=>$m1,'v1'=>$v1,'total'=>$total];
+        $result = ['l1'=>$l1,'l2'=>$l2,'l3'=>$l3,'d1'=>$d1,'d2'=>$d2,'d3'=>$d3,'m1'=>$m1,'v1'=>$v1,'r'=>$r,'total'=>$total];
 
         return $result;
     }

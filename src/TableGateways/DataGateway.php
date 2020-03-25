@@ -13,12 +13,6 @@ class DataGateway {
 
     public function findAll()
     {
-        // $statement = "
-        //     SELECT 
-        //         ID, PlatniBroj, ImePrezime, Sluzba, CardCode
-        //     FROM
-        //         UNOEmployees;
-        // ";
         $statement = "
                 SELECT TOP(1)
                 	   e.emp_id,
@@ -27,11 +21,11 @@ class DataGateway {
                 	   e.Sluzba,
                 	   t.id,
                 	   t.dateIO
-                FROM UNO1.dbo.UNOEmployees e 
+                FROM UNO1.dbo.UNOEmployees e
                 INNER JOIN UNO1.dbo.UNOTrans t ON e.CardCode LIKE t.CardCode
                 ORDER BY t.id DESC;
         ";
-        
+
 
         try {
             $statement = $this->db->query($statement);
@@ -45,12 +39,12 @@ class DataGateway {
     public function countReader($name)
     {
         $statement = "
-                SELECT 
-	                COUNT (*) 
+                SELECT
+	                COUNT (*)
                 FROM AXDB.dbo.UnoTrans
                 WHERE FC like '%$name%'
         ";
-        
+
         try {
             $statement = $this->db->query($statement);
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -64,12 +58,12 @@ class DataGateway {
     {
         $today = date('Y-m-d');
         $statement = "
-                SELECT 
-	                COUNT (*) 
+                SELECT
+	                COUNT (*)
                 FROM AXDB.dbo.UnoTrans
                 WHERE FC like '%$name%' AND DATEIO >= '$today'
         ";
-        
+
         try {
             $statement = $this->db->query($statement);
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -79,19 +73,75 @@ class DataGateway {
         }
     }
 
+    public function countManualEntry()
+    {
+        $today = date('Y-m-d');
+        $statement = "
+                SELECT
+	                COUNT (*)
+                FROM AXDB.dbo.UnoTrans
+                WHERE FC like ''
+        ";
+
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
+    public function countManualEntryToday()
+    {
+        $today = date('Y-m-d');
+        $statement = "
+                SELECT
+	                COUNT (*)
+                FROM AXDB.dbo.UnoTrans
+                WHERE FC like '' AND DATEIO >= '$today'
+        ";
+
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
+    public function countManualEntryYesterday()
+    {
+        $today = date('Y-m-d');
+        $statement = "
+                SELECT
+	                COUNT (*)
+                FROM AXDB.dbo.UnoTrans
+                WHERE FC like '' AND DATEIO >= '$today'
+        ";
+
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
 
     public function countReaderYesterday($name)
-    {   
+    {
         $yesterday =  date("Y-m-d", strtotime('-1 days'));
         $today =  date("Y-m-d");
 
         $statement = "
-                SELECT 
-	                COUNT (*) 
+                SELECT
+	                COUNT (*)
                 FROM AXDB.dbo.UnoTrans
                 WHERE FC like '%$name%' AND DATEIO >= '$yesterday' AND DATEIO <'$today'
         ";
-        
+
         try {
             $statement = $this->db->query($statement);
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -104,12 +154,12 @@ class DataGateway {
     public function countInvalid($name)
     {
         $statement = "
-                SELECT 
-	                COUNT (*) 
+                SELECT
+	                COUNT (*)
                 FROM AXDB.dbo.UnoTrans
                 WHERE FC = '$name'
         ";
-        
+
         try {
             $statement = $this->db->query($statement);
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -122,7 +172,7 @@ class DataGateway {
     public function find($id)
     {
         $statement = "
-            SELECT 
+            SELECT
                 ID, PlatniBroj, ImePrezime, Sluzba, IDKartice
             FROM
                 UNOEmployess
@@ -136,6 +186,6 @@ class DataGateway {
             return $result;
         } catch (\PDOException $e) {
             exit($e->getMessage());
-        }    
+        }
     }
 }

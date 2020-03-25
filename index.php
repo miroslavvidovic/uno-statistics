@@ -13,6 +13,10 @@ $templates = new League\Plates\Engine('src/templates/');
 
 $request = $_SERVER['REQUEST_URI'];
 
+// Remove not needed templates, one template (readers) is used for all the data
+// readers all and readers yesterday is not needed 
+// the same is for restaraunts
+
 switch ($request) {
     case '/' :
         $controller = new DataController($dbConnection);

@@ -44,6 +44,9 @@ $date = date("d.m.Y. - h:i:s ");
                 <li>
                     <a href="/computers">Računari</a>
                 </li>
+                <li>
+                    <a href="/employees">Broj radnika</a>
+                </li>
             </ul>
         </nav>
 

@@ -81,6 +81,14 @@ switch ($request) {
         // Render a template
         echo $templates->render('computers', $data);
         break;
+    case '/employees' :
+        $controller = new DataController($dbConnection);
+        $num = $controller->getNumOfEmployees();
+        $list = $controller->listEmployees();
+        // Render a template
+        $data = array_merge($num,$list);
+        echo $templates->render('employees', $data);
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/views/404.php';

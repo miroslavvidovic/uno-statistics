@@ -188,4 +188,40 @@ class DataGateway {
             exit($e->getMessage());
         }
     }
+
+    public function countEmployeesToday() {
+        $today = date('Y-m-d');
+        $statement = "
+                SELECT
+	                COUNT (DISTINCT EMPLOYEEID)
+                FROM AXDB.dbo.UnoTrans
+                WHERE DATEIO = '$today' and TIMEIO >= 21000 and TIMEIO <=25200
+        ";
+
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
+    public function listEmployeesToday() {
+        $today = date('Y-m-d');
+        $statement = "
+                SELECT
+	                EMPLOYEEID, EMPNAME, DIMENSION, DIMNAME
+                FROM AXDB.dbo.UnoTrans
+                WHERE DATEIO = '$today' and TIMEIO >= 21000 and TIMEIO <=25200 ORDER BY DIMENSION
+        ";
+
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
 }

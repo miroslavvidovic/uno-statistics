@@ -66,4 +66,19 @@ class DataController {
 
         return $result;
     }
+
+
+    public function getNumOfEmployees(){
+        $NumOfWorkers = $this->dataGateway->countEmployeesToday();
+        $result = ['Employees'=>$NumOfWorkers];
+
+        return $result;
+    }
+
+    public function listEmployees(){
+        $Employees = $this->dataGateway->listEmployeesToday();
+        $result = ['List'=>$Employees];
+
+        return $result;
+    }
 }

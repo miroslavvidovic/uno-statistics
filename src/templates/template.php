@@ -50,6 +50,9 @@ $date = date("d.m.Y. - h:i:s ");
                 <li>
                     <a href="/sparehours">Narađeni sati</a>
                 </li>
+                <li>
+                    <a href="/passouts">Izlaznice</a>
+                </li>
             </ul>
         </nav>
 

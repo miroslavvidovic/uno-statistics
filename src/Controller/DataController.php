@@ -88,4 +88,25 @@ class DataController {
 
         return $result;
     }
+
+    public function totalPassOut(){
+        $totalPassOut = $this->dataGateway->countTotalPassOuts();
+        $result = ['total'=>$totalPassOut];
+
+        return $result;
+    }
+
+    public function passOutByDay(){
+        $dayliyPassOut = $this->dataGateway->countPassOutsByDay();
+        $result = ['daily'=>$dayliyPassOut];
+
+        return $result;
+    }
+
+    public function passOutByMonth(){
+        $monthlyPassOut = $this->dataGateway->countPassOutsByMonth();
+        $result = ['monthly'=>$monthlyPassOut];
+
+        return $result;
+    }
 }

@@ -244,4 +244,47 @@ GROUP BY c.EMPLOYEEID, c.FIRSTNAME, c.LASTNAME, c.DIMENSION
             exit($e->getMessage());
         }
     }
+
+    public function countTotalPassOuts(){
+        $statement = "
+            SELECT COUNT (*) FROM AXDB.dbo.UNOPASSOUT WHERE DATAAREAID = 'ta3';
+        ";
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
+    public function countPassOutsByMonth(){
+        // Last 3 months
+        $statement = "
+            SELECT MONTH(DATEOUT), COUNT(*) FROM AXDB.dbo.UNOPASSOUT WHERE DATAAREAID = 'ta3' AND DATEOUT >= DATEADD(MONTH, -3, GetDate())
+            GROUP BY MONTH(DATEOUT) ORDER BY MONTH(DATEOUT);
+        ";
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
+
+    public function countPassOutsByDay(){
+        // Last 30 days
+        $statement = "
+        SELECT DATEOUT, COUNT(RECID) FROM AXDB.dbo.UNOPASSOUT WHERE DATAAREAID = 'ta3' AND DATEOUT >= DATEADD(DAY,DATEDIFF(DAY,0,GetDate())-30,0)
+        GROUP BY DATEOUT ORDER BY DATEOUT;
+        ";
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
 }

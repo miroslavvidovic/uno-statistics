@@ -95,6 +95,15 @@ switch ($request) {
         // Render a template
         echo $templates->render('sparehours', $data);
         break;
+    case '/passouts' :
+        $controller = new DataController($dbConnection);
+        $totalData = $controller->totalPassOut();
+        $monthlyData = $controller->passOutByMonth();
+        $dailylData = $controller->passOutByDay();
+        // Render a template
+        $data = array_merge($totalData,$monthlyData,$dailylData);
+        echo $templates->render('passouts', $data);
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/views/404.php';

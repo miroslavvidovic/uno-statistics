@@ -81,4 +81,11 @@ class DataController {
 
         return $result;
     }
+
+    public function listSpareHours(){
+        $Employees = $this->dataGateway->sumSpareHours();
+        $result = ['List'=>$Employees];
+
+        return $result;
+    }
 }

@@ -89,6 +89,12 @@ switch ($request) {
         $data = array_merge($num,$list);
         echo $templates->render('employees', $data);
         break;
+    case '/sparehours' :
+        $controller = new DataController($dbConnection);
+        $data = $controller->listSpareHours();
+        // Render a template
+        echo $templates->render('sparehours', $data);
+        break;
     default:
         http_response_code(404);
         require __DIR__ . '/views/404.php';

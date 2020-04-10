@@ -224,4 +224,24 @@ class DataGateway {
             exit($e->getMessage());
         }
     }
+
+    /**
+     *  SQL query to sum the spare hours for each employee
+     */
+    public function sumSpareHours() {
+        $statement = "
+        SELECT c.EMPLOYEEID as Platni_broj, c.FIRSTNAME as Ime, c.LASTNAME as Prezime, c.DIMENSION as Mjesto_troska, sum(s.HOURS) as Naradjeni_sati
+FROM AXDB.dbo.UNOCARDSET c  INNER JOIN AXDB.dbo.UNOSPAREHOURSTRANS s
+ON c.EMPLOYEEID=s.EMPLOYEEID WHERE s.DATAAREAID = 'ta3' AND c.DATAAREAID = 'ta3'
+GROUP BY c.EMPLOYEEID, c.FIRSTNAME, c.LASTNAME, c.DIMENSION
+        ";
+
+        try {
+            $statement = $this->db->query($statement);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            exit($e->getMessage());
+        }
+    }
 }

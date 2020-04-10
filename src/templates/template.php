@@ -47,6 +47,9 @@ $date = date("d.m.Y. - h:i:s ");
                 <li>
                     <a href="/employees">Broj radnika</a>
                 </li>
+                <li>
+                    <a href="/sparehours">Narađeni sati</a>
+                </li>
             </ul>
         </nav>
 
